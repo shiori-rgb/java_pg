@@ -1,13 +1,15 @@
-// Todoを4件まとめて持つ配列（複数のデータを並べたもの）を作ります。
+// Todoを3件まとめて持つ配列（複数のデータを並べたもの）を作ります。
 public class Items {
     // プログラムの実行を始める場所です。
     public static void main(String[] args) {
-        // Todoの文字列4件を配列（データの並び）に入れます。
-        String[] todos = { "牛乳を買う", "卵を買う", "パンを買う", "掃除をする" };
+        // Todoの文字列3件を配列（データの並び）に入れます。
+        String[] todos = { "牛乳を買う", "", "パンを買う", "掃除をする" };
         // iを使って配列の先頭から最後まで1件ずつ繰り返します。
         for (int i = 0; i < todos.length; i++) {
             // Todoを<li>と</li>で囲み、ターミナル（文字を表示する画面）に出力します。
-            System.out.println("<li>" + todos[i] + "</li>");
+            if (!todos[i].isEmpty()) {
+                System.out.println("<li>" + todos[i] + "</li>");
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 
 // Todo（やることを表すデータ）を使うためのList（複数のデータを入れる箱）を読み込みます。
+import java.util.ArrayList;
 import java.util.List;
 
 // プログラムの開始地点を持つクラスです。
@@ -23,21 +24,21 @@ public class Main {
         // TodoをHTMLのli（箇条書き）形式の1行に変えます。
         String toItem() {
             // 済んでいれば「[済] 」を付け、済んでいなければ何も付けません。
-            String mark = done ? "[済] " : "";
+            String mark = done ? "[完了] " : "";
             // 作成した印とタイトルをliタグで囲んだ文字列を返します。
-            return "<li>" + mark + title + "</li>";
+            return "<li>" + mark + memo + "</li>";
         }
     }
 
     // Javaプログラムが最初に実行するメソッド（処理の入口）です。
     public static void main(String[] args) {
         // Todoを2件入れるList（複数のTodoを並べる箱）を作ります。
-        List<Todo> todos = List.of(
+        List<Todo> todos = new ArrayList<>(List.of(
                 // まだ済んでいないTodoを1件入れます。
-                new Todo("牛乳を買う", false),
+                new Todo("牛乳を買う", true),
                 // 済んだTodoを1件入れます。
-                new Todo("ゴミを出す", true));
-
+                new Todo("ゴミを出す", false)));
+        todos.add(new Todo("掃除をする", false));
         // for（繰り返し）でListのTodoを1件ずつ取り出します。
         for (Todo todo : todos) {
             // toItem()の結果をターミナル（文字を表示する画面）に1行出力します。

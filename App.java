@@ -4,7 +4,8 @@ import java.net.InetSocketAddress; // 待ち受ける番号（ポート）を扱
 public class App { // Appという名前のプログラムを定義します。
     public static void main(String[] args) throws Exception { // プログラムの開始地点を定義します。
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0); // 8080番で接続を待つサーバーを用意します。
-        server.createContext("/", exchange -> { // トップページ（/）への処理を直接書きます。
+        server.createContext("/", exchange -> {
+            System.out.println("ハンドラが動いた"); // トップページ（/）への処理を直接書きます。
             String message = "天津飯"; // ブラウザに返す文字を用意します。
             exchange.getResponseHeaders().set("Content-Type", "text/plain; charset=UTF-8"); // 返す文字がUTF-8だと伝えます。
             byte[] body = message.getBytes("UTF-8"); // 返す文字をUTF-8のデータに変換します。
